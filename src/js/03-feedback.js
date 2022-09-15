@@ -6,10 +6,10 @@ import localStorageService from './local-storage-service';
 const feedbackFormEl = document.querySelector('.feedback-form');
 
 const formFieldsData = {};
-const localStorageKey = 'feedback-form-state';
+const STORAGE_KEY = 'feedback-form-state';
 
 const fillFormFields = () => {
-  const dataFromLocalStorage = localStorageService.load(localStorageKey);
+  const dataFromLocalStorage = localStorageService.load(STORAGE_KEY);
 
   if (dataFromLocalStorage === undefined) {
     return;
@@ -40,15 +40,15 @@ const onFeedbackFormInput = event => {
 
   formFieldsData[formFieldName] = formFieldValue;
 
-  localStorageService.save(localStorageKey, formFieldsData);
+  localStorageService.save(STORAGE_KEY, formFieldsData);
 };
 
 const onFeedbackFormSubmit = event => {
   event.preventDefault();
 
-  console.log(localStorageService.load(localStorageKey));
+  console.log(localStorageService.load(STORAGE_KEY));
 
-  localStorageService.remove(localStorageKey);
+  localStorageService.remove(STORAGE_KEY);
   event.currentTarget.reset();
 };
 
