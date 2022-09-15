@@ -9,7 +9,7 @@ const formFieldsData = {};
 const localStorageKey = 'feedback-form-state';
 
 const fillFormFields = () => {
-  dataFromLocalStorage = localStorageService.load(localStorageKey);
+  const dataFromLocalStorage = localStorageService.load(localStorageKey);
 
   if (dataFromLocalStorage === undefined) {
     return;
