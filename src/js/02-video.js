@@ -4,16 +4,18 @@ import throttle from 'lodash.throttle';
 const iframe = document.querySelector('iframe');
 const player = new Player(iframe);
 
+const timeMark = 'videoplayer-current-time';
+
 const onPlay = function (data) {
   // data is an object containing properties specific to that event
-  localStorage.setItem('videoplayer-current-time', data.seconds);
+  localStorage.setItem(timeMark, data.seconds);
   //   console.log(data.seconds);
 };
 
 player.on('timeupdate', throttle(onPlay, 1000));
 
 player
-  .setCurrentTime(localStorage.getItem('videoplayer-current-time'))
+  .setCurrentTime(localStorage.getItem(timeMark))
   .then(function (seconds) {
     // seconds = the actual time that the player seeked to
   })
@@ -32,4 +34,4 @@ player
 //
 // так тоже работает:
 //
-// player.setCurrentTime(localStorage.getItem('videoplayer-current-time'));
+// player.setCurrentTime(localStorage.getItem(timeMark));
