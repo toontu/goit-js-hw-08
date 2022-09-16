@@ -36,7 +36,8 @@ const fillFormFields = () => {
 
 const onFeedbackFormInput = event => {
   const formFieldName = event.target.name;
-  const formFieldValue = event.target.value;
+  // const formFieldValue = event.target.value;
+  const formFieldValue = event.target.value.trim(); // нужно с трим
 
   formFieldsData[formFieldName] = formFieldValue;
 
